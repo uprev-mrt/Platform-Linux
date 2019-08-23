@@ -23,10 +23,11 @@ typedef struct{
     uint8_t mConnected;
 } udp_stream;
 
-int udp_init(udp_stream* stream, uint16_t localPort );
-int udp_connect(udp_stream* stream, char* remoteSocket);
+int udp_init(udp_stream* stream, const char* connStr );
+int udp_connect(udp_stream* stream, const char* remoteIp, uint16_t remotePort);
 int udp_send(udp_stream* stream, uint8_t* data, int len);
 int udp_recv(udp_stream* stream, uint8_t* data, int len);
+int udp_close(udp_stream* stream);
 
 
 #endif //TEST_UTIL_LINUX_UDP_H

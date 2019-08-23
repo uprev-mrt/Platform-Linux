@@ -90,10 +90,11 @@ int udp_recv(udp_stream* stream, uint8_t* data, int len)
     int addrLen;
 
     int rxLen = recvfrom(stream->mSock, data,  len, 0, (struct sockaddr*)&peerAddr, &addrLen );
-    if(!stream->mConnected)
+    if((rxLen > 0) && (!stream->mConnected))
     {
         stream->mRemoteAddr.sin_port = peerAddr.sin_port;
         stream->mRemoteAddr.sin_addr = peerAddr.sin_addr;
+        printf("Connection established with %s:%u \n", inet_ntoa(peerAddr.sin_addr), ntohs(peerAddr.sin_port));
         stream->mRemoteAddr.sin_family = AF_INET;
         stream->mConnected = 1;
     }

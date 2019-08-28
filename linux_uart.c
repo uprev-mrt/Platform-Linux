@@ -71,6 +71,21 @@ void uart_config(int fd, int baudRate)
   tcsetattr(fd,TCSANOW,&SerialPortSettings);
 }
 
+bool uart_init(int* fd,const char * connStr)
+{
+    int ret;
+    char* copy = strdup(connStr);
+
+    char* port = strtok(copy,":");
+    char* strbaud = strtok(NULL,"");
+    int baud = atoi(strbaud);
+
+    ret = uart_open(fd,port,baud);
+
+    free(copy);
+    return ret;
+}
+
 bool uart_open(int* fd, const char * device, int baudRate)
 {
     *fd = open(device , O_RDWR | O_NOCTTY);

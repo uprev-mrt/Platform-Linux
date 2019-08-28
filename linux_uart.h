@@ -16,6 +16,14 @@
 
 
 
+/**
+  *@brief init initializes and opens port from a connection string
+  *@param fd ptr to int to store uart handle
+  *@param connStr connection string <port>:<baud>
+  *@return true if successful
+  *@return false if there was a problem
+  */
+bool uart_init(int* fd,const char * connStr);
 
 /**
   *@brief open uart port

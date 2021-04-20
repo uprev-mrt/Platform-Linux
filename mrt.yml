@@ -1,0 +1,5 @@
+---
+name: Atmel
+description: Abstraction layer for Atmel series MCUs
+category: Platform
+requires: [Platform]

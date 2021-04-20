@@ -1,3 +1,3 @@
-# Platform-Linux
+# Linux
 
 Platform abstraction for linux
